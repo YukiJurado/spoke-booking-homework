@@ -1,0 +1,91 @@
+/*
+ * Source: Figma / Spoke starter kit / Foundations, node 7:26.
+ * https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=7-26
+ * Figma names become lowercase CSS properties with / replaced by -.
+ * Pixel units preserve the Figma values. Text styles expose individual
+ * properties and a font shorthand; letter spacing is applied separately.
+ * Inter font files still need to be supplied before matching typography.
+ */
+:root {
+  /* Colours */
+  --color-surface: #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #6b6660;
+  --color-border: #e4e0d8;
+  --color-brand: #e8552b;
+  --color-on-brand: #ffffff;
+  --color-tag-background: #fcebe4;
+  --color-tag-text: #b23e16;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+
+  /* Corner radii */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Inter is the Figma family; sans-serif is a browser fallback. */
+  --font-family: 'Inter', sans-serif;
+
+  /* Screen/Title */
+  --screen-title-font-family: var(--font-family);
+  --screen-title-font-size: 28px;
+  --screen-title-font-weight: 600;
+  --screen-title-line-height: 34px;
+  --screen-title-letter-spacing: 0px;
+  --screen-title-font: var(--screen-title-font-weight) var(--screen-title-font-size) / var(--screen-title-line-height) var(--screen-title-font-family);
+
+  /* Card/Title */
+  --card-title-font-family: var(--font-family);
+  --card-title-font-size: 20px;
+  --card-title-font-weight: 600;
+  --card-title-line-height: 28px;
+  --card-title-letter-spacing: 0px;
+  --card-title-font: var(--card-title-font-weight) var(--card-title-font-size) / var(--card-title-line-height) var(--card-title-font-family);
+
+  /* Card/Body */
+  --card-body-font-family: var(--font-family);
+  --card-body-font-size: 15px;
+  --card-body-font-weight: 400;
+  --card-body-line-height: 22px;
+  --card-body-letter-spacing: 0px;
+  --card-body-font: var(--card-body-font-weight) var(--card-body-font-size) / var(--card-body-line-height) var(--card-body-font-family);
+
+  /* Card/Caption */
+  --card-caption-font-family: var(--font-family);
+  --card-caption-font-size: 14px;
+  --card-caption-font-weight: 400;
+  --card-caption-line-height: 20px;
+  --card-caption-letter-spacing: 0px;
+  --card-caption-font: var(--card-caption-font-weight) var(--card-caption-font-size) / var(--card-caption-line-height) var(--card-caption-font-family);
+
+  /* Label/Button */
+  --label-button-font-family: var(--font-family);
+  --label-button-font-size: 16px;
+  --label-button-font-weight: 600;
+  --label-button-line-height: 24px;
+  --label-button-letter-spacing: 0px;
+  --label-button-font: var(--label-button-font-weight) var(--label-button-font-size) / var(--label-button-line-height) var(--label-button-font-family);
+
+  /* Label/Field */
+  --label-field-font-family: var(--font-family);
+  --label-field-font-size: 14px;
+  --label-field-font-weight: 500;
+  --label-field-line-height: 20px;
+  --label-field-letter-spacing: 0px;
+  --label-field-font: var(--label-field-font-weight) var(--label-field-font-size) / var(--label-field-line-height) var(--label-field-font-family);
+
+  /* Label/Tag */
+  --label-tag-font-family: var(--font-family);
+  --label-tag-font-size: 13px;
+  --label-tag-font-weight: 500;
+  --label-tag-line-height: 18px;
+  --label-tag-letter-spacing: 0px;
+  --label-tag-font: var(--label-tag-font-weight) var(--label-tag-font-size) / var(--label-tag-line-height) var(--label-tag-font-family);
+}

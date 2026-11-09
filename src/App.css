@@ -43,3 +43,19 @@
 .action-bar .button { width: 100%; }
 .selection-status { color: var(--color-text-muted); font: var(--card-caption-font); }
 .selection-status:empty { display: none; }
+
+/* Screen 02 and Time slot follow Figma nodes 7:121 and 6:14. */
+.top-bar__back { border: none; padding: var(--space-0); background: none; cursor: pointer; }
+.screen-heading h1:focus { outline: none; }
+.slot-form { display: flex; flex-direction: column; gap: var(--space-16); }
+.slot-group { min-width: 0; margin: var(--space-0); padding: var(--space-0); border: none; }
+.slot-group legend { padding: var(--space-0); margin-bottom: var(--space-8); font: var(--label-field-font); letter-spacing: var(--label-field-letter-spacing); }
+.slot-options { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-8); }
+.time-slot { position: relative; display: inline-flex; cursor: pointer; }
+.time-slot__radio { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: var(--space-0); cursor: inherit; }
+.time-slot__label { display: flex; align-items: center; justify-content: center; padding: var(--space-12) var(--space-16); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text-primary); font: var(--label-field-font); letter-spacing: var(--label-field-letter-spacing); white-space: nowrap; }
+.time-slot--selected .time-slot__label { border: none; background: var(--color-brand); color: var(--color-on-brand); }
+.time-slot--disabled { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.time-slot--disabled .time-slot__label { color: var(--color-text-muted); }
+.time-slot__radio:focus-visible + .time-slot__label { outline: var(--border-width-strong) solid var(--color-text-primary); outline-offset: var(--space-4); }
+.slot-note { color: var(--color-text-muted); font: var(--card-caption-font); letter-spacing: var(--card-caption-letter-spacing); }

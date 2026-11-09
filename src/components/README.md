@@ -3,8 +3,9 @@
 Reviewed through Figma MCP on 2026-11-09, including a rendered view of the
 [Components section](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=3-25).
 This is an inventory and implementation guide. The first screen now uses React
-implementations of Button, Tag, TopBar, ServiceCard and ActionBar. TimeSlot, Input
-and SummaryRow remain to be implemented.
+implementations of Button, Tag, TopBar, ServiceCard and ActionBar. The second
+screen adds TimeSlot with Default, Selected and Disabled states. Input and
+SummaryRow remain to be implemented.
 
 Both pages were searched for component definitions. `Spoke starter kit` contains
 8 component families: 4 standalone components and 4 variant sets containing
@@ -97,9 +98,27 @@ Buttons within Action bars. Every inspected instance resolved to a main componen
 The component sheet was visually inspected. The implemented first screen was
 also checked in the browser at 392×846, with additional 320px and desktop
 overflow checks. Mouse and arrow-key radio selection and Continue feedback were
-verified. Continue currently confirms the selection; it does not navigate to
-the unimplemented slot screen. The existing Figma variant geometry and orange
+verified. Continue now opens the implemented slot screen. The existing Figma variant geometry and orange
 colour are preserved, including the contrast limitation noted above.
 
 The original Figma review covers the source library. Browser verification here
-covers the first screen only; the other two screens remain unimplemented.
+covers the first and second screens; the confirmation screen remains unimplemented.
+
+
+## Screen 02 implementation
+
+`src/screens/PickSlot.tsx` follows [frame 7:121](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=7-121).
+It reuses TopBar, ActionBar and Button, and adds the TimeSlot radio component.
+Day and time are separate native radio groups with keyboard selection and
+visible focus. The two disabled times cannot be selected and are skipped by
+keyboard navigation. The chosen service controls the subtitle; Back preserves
+service, day and time selections.
+
+The options are the static exercise data from Figma (Today, Tomorrow, Mon 16,
+and six times); this screen does not fetch live availability. Continue confirms
+the chosen slot in a status message until screen 03 is implemented. Figma's
+state-dependent control sizes and brand colours remain unchanged.
+
+Verification: production build and lint passed; browser comparison at 392×846,
+320px and desktop overflow checks, day/time selection, disabled-state keyboard
+skipping, Continue feedback, back navigation and service-dependent subtitle.

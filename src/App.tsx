@@ -4,6 +4,7 @@ import { ActionBar } from './components/ActionBar'
 import { ChooseService } from './screens/ChooseService'
 import { PickSlot } from './screens/PickSlot'
 import { Confirm } from './screens/Confirm'
+import { BookingComplete } from './screens/BookingComplete'
 import { services } from './data/services'
 import './App.css'
 
@@ -15,17 +16,45 @@ export default function App() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [confirmed, setConfirmed] = useState(false)
+  const [reference, setReference] = useState('')
   const headingRef = useRef<HTMLHeadingElement>(null)
   const selected = services.find(service => service.id === selectedId)!
 
   useEffect(() => {
     headingRef.current?.focus()
-  }, [step])
+  }, [step, confirmed])
 
   function changeStep(nextStep: 1 | 2 | 3) {
     setConfirmed(false)
     setStep(nextStep)
     window.scrollTo(0, 0)
+  }
+
+  function finishBooking() {
+    setReference(`DEMO-${crypto.randomUUID().slice(0, 8).toUpperCase()}`)
+    setConfirmed(true)
+    window.scrollTo(0, 0)
+  }
+
+  function startAgain() {
+    setSelectedId(services[0].id)
+    setDay('Today')
+    setTime('16:30')
+    setName('')
+    setPhone('')
+    setReference('')
+    changeStep(1)
+  }
+
+  if (confirmed) {
+    return (
+      <div className="booking-screen">
+        <TopBar step="Complete" onBack={startAgain} backLabel="Start a new booking" />
+        <BookingComplete name={name} service={selected} day={day} time={time}
+          reference={reference} headingRef={headingRef} />
+        <ActionBar label="Done" onClick={startAgain} />
+      </div>
+    )
   }
 
   return (
@@ -42,11 +71,10 @@ export default function App() {
       ) : (
         <Confirm service={selected} day={day} time={time} name={name} phone={phone}
           headingRef={headingRef} onNameChange={setName} onPhoneChange={setPhone}
-          onConfirm={() => setConfirmed(true)} confirmed={confirmed} />
+          onConfirm={finishBooking} confirmed={confirmed} />
       )}
-      <ActionBar label={step === 3 ? confirmed ? 'Demo booking confirmed' : 'Confirm booking' : 'Continue'}
-        form={step === 1 ? 'choose-service' : step === 2 ? 'pick-slot' : 'confirm-booking'}
-        disabled={confirmed} />
+      <ActionBar label={step === 3 ? 'Confirm booking' : 'Continue'}
+        form={step === 1 ? 'choose-service' : step === 2 ? 'pick-slot' : 'confirm-booking'} />
     </div>
   )
 }

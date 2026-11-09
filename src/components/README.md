@@ -146,9 +146,9 @@ field. Contact details and prior selections remain in React memory during back
 navigation; reloading clears them. No contact information is sent or stored by
 this app.
 
-A valid submission shows an explicit demo confirmation and disables the action
-and inputs to avoid repeat submission. There is no booking API, live reservation,
-SMS integration or payment transaction. Going back allows another demo attempt.
+A valid submission now replaces the form with the BookingComplete screen
+(described below), avoiding repeated form submission. There is no booking API,
+live reservation, SMS integration or payment transaction.
 
 Verification: production build and lint passed. Browser checks compared the
 392×846 screen with the Figma render, including the focused Phone field and the
@@ -190,3 +190,39 @@ shows all four states as component instances. Figma screenshots verified the
 preview without clipped shadows and the original service screen with its content
 intact. Browser checks verified the 4px transform, matching shadow, unchanged
 neighbour positions, selected border, mouse/keyboard selection and reduced motion.
+
+
+## Completion proposal: celebration + saveable booking pass
+
+[04 Booking complete in Figma](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=2027-81)
+combines option 1's positive finishing moment with option 2's tangible receipt.
+
+Scope: one new screen (`src/screens/BookingComplete.tsx`), one inline vector
+checkmark, a callback option on ActionBar, and two success illustration/motion
+tokens. No new reusable UI component family or dependency was introduced.
+Reuses TopBar, Tag, SummaryRow, Button and ActionBar, plus the existing summary
+container, spacing, colours and typography.
+
+After valid submission the form is replaced by a personalised heading, one-time
+400ms checkmark arrival, a booking pass (service, drop-off, price, demo reference),
+a Secondary Save booking details action, and the existing footer with Done.
+References use a random DEMO-prefixed identifier. Saving creates a local plain
+text receipt with the selected details and timestamp. It sends no data to a
+server and contains no phone number. Done clears the flow for a new attempt.
+Reduced motion disables the checkmark animation. Demo status is explicit both
+on screen and in the receipt; no appointment is reserved.
+
+Figma uses an editable screen made of 9 existing-component instances, editable
+text and vector layers, not a screenshot. It sits below the original screens
+in the Screens section. The original Confirm action navigates to it using
+Smart Animate; its Done action returns to Choose a service. The Save action is
+a design representation in Figma; the working download is implemented in code.
+The named prototype flow is Booking completion proposal. No existing main
+components were duplicated or detached.
+
+Checks: production build/lint, personalised completion and focus transfer,
+actual downloaded receipt contents, Done reset, reduced-motion emulation,
+320px/desktop overflow checks, and screenshot comparison between browser and
+Figma. The Figma subtitle height was adjusted to match the browser's single-line
+text. User-specific text (name/reference) is sample content in Figma and dynamic
+in React.

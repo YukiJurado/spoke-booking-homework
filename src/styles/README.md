@@ -68,3 +68,8 @@ The code-first hover design adds `--service-card-hover-lift` (-4px),
 Figma mirrors the colour as `color/service-card/shadow` and the shadow as the
 shared `Service card/Hover` effect style. Existing spacing tokens supply shadow
 offset and blur; the lift is a visual offset inside the Figma hover variant.
+
+
+The completion screen adds two implementation tokens: `--success-mark-size`
+(64px) and `--success-motion-duration` (400ms). Existing palette and typography
+tokens style the new illustration and the reused booking-pass components.

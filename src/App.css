@@ -86,3 +86,22 @@
   .service-option:hover .service-card,
   .service-option__radio:focus-visible + .service-card { transform: none; }
 }
+
+/* Completion proposal: reuse summary rows, Tag, Button and ActionBar. */
+.success-heading { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); padding-block: var(--space-16); text-align: center; }
+.success-heading .screen-heading { gap: var(--space-8); }
+.success-mark { flex: none; width: var(--success-mark-size); height: var(--success-mark-size); animation: success-arrive var(--success-motion-duration) var(--service-card-motion-easing) both; }
+.success-mark circle { fill: var(--color-tag-background); }
+.success-mark path { stroke: var(--color-brand); }
+.booking-pass__heading { display: flex; justify-content: space-between; align-items: center; gap: var(--space-12); flex-wrap: wrap; }
+.booking-pass__heading h2 { margin: var(--space-0); font: var(--card-title-font); letter-spacing: var(--card-title-letter-spacing); }
+.booking-pass__rows { display: flex; flex-direction: column; gap: var(--space-12); margin: var(--space-0); }
+.booking-pass__save { width: 100%; }
+.success-note { text-align: center; }
+@keyframes success-arrive {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .success-mark { animation: none; }
+}

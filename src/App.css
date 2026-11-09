@@ -70,6 +70,7 @@
 .input__label { font: var(--label-field-font); letter-spacing: var(--label-field-letter-spacing); }
 .input__field { width: 100%; min-width: 0; padding: var(--space-12) var(--space-16); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text-primary); font: var(--card-body-font); letter-spacing: var(--card-body-letter-spacing); }
 .input__field::placeholder { color: var(--color-text-muted); opacity: 1; }
+.input__field:focus::placeholder { opacity: 0; }
 .input__field:focus { outline: none; border: var(--border-width-strong) solid var(--color-brand); }
 .input__field:disabled { opacity: var(--opacity-disabled); }
 .input__error { color: var(--color-text-primary); font: var(--card-caption-font); }

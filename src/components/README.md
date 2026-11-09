@@ -132,7 +132,10 @@ skipping, forward/back navigation and service-dependent subtitle.
 `src/screens/Confirm.tsx` follows [frame 7:128](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=7-128).
 It reuses TopBar, ActionBar and Button, and adds Input and SummaryRow. The three
 summary rows reflect the chosen service, drop-off day/time and price. Input uses
-real focus to show Figma's 2px brand border; fields are not artificially focused.
+real focus to show Figma's 2px brand border and hide the placeholder; fields are
+not artificially focused. Empty fields show their placeholder again on blur.
+Figma's Input Focus variant hides its Placeholder layer using zero opacity,
+preserving the field dimensions and editable placeholder text property.
 The existing local chevron asset is reused.
 
 Name is required after trimming whitespace. Phone accepts an optional leading

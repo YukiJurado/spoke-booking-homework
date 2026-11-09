@@ -6,6 +6,7 @@ Add a row every time you prompt the agent for something that matters. Write it w
 |---|---|---|---|---|
 | 2026-11-09 | Connect my Figma design to this project. | Downloaded the starter repository and verified access through the installed Figma MCP integration by reading page 6:5 (Spoke starter kit). Added verified links to its three screen frames in README.md. | No design or app code changes yet. | — |
 | 2026-11-09 | Read Figma Foundations and create CSS tokens for colours, spacing, radii, and typography; preserve names and flag gaps. | Read Foundations node 7:26 and its variable definitions through Figma MCP. Created src/styles/tokens.css, imported it in main.tsx, and documented the mappings in src/styles/README.md. | Mapped slashes to hyphens and split text styles into CSS properties. Flagged missing Inter font files and unspecified additional foundations. | — |
+| 2026-11-09 | Check all the components in the Figma file as well. | Inspected definitions on both pages, all 8 component families and their 13 definitions, variant/content properties, token bindings, screen reuse and a rendered component sheet. Recorded the review in src/components/README.md. | Flagged state size changes, absent interaction states, brand contrast, an unbound icon colour, missing component tokens, nested content controls and pending font loading. No design or app component changes. | — |
 
 ## Hint level in Challenge 1
 

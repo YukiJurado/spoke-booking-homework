@@ -4,8 +4,9 @@ Reviewed through Figma MCP on 2026-11-09, including a rendered view of the
 [Components section](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=3-25).
 This is an inventory and implementation guide. The first screen now uses React
 implementations of Button, Tag, TopBar, ServiceCard and ActionBar. The second
-screen adds TimeSlot with Default, Selected and Disabled states. Input and
-SummaryRow remain to be implemented.
+screen adds TimeSlot with Default, Selected and Disabled states. The third
+screen adds Input and SummaryRow. All eight component families now have React
+implementations.
 
 Both pages were searched for component definitions. `Spoke starter kit` contains
 8 component families: 4 standalone components and 4 variant sets containing
@@ -102,7 +103,7 @@ verified. Continue now opens the implemented slot screen. The existing Figma var
 colour are preserved, including the contrast limitation noted above.
 
 The original Figma review covers the source library. Browser verification here
-covers the first and second screens; the confirmation screen remains unimplemented.
+now covers all three screens.
 
 
 ## Screen 02 implementation
@@ -115,10 +116,38 @@ keyboard navigation. The chosen service controls the subtitle; Back preserves
 service, day and time selections.
 
 The options are the static exercise data from Figma (Today, Tomorrow, Mon 16,
-and six times); this screen does not fetch live availability. Continue confirms
-the chosen slot in a status message until screen 03 is implemented. Figma's
+and six times); this screen does not fetch live availability. Continue opens
+the confirmation screen with the selected service, day and time. Figma's
 state-dependent control sizes and brand colours remain unchanged.
 
 Verification: production build and lint passed; browser comparison at 392×846,
 320px and desktop overflow checks, day/time selection, disabled-state keyboard
-skipping, Continue feedback, back navigation and service-dependent subtitle.
+skipping, forward/back navigation and service-dependent subtitle.
+
+
+## Screen 03 implementation
+
+`src/screens/Confirm.tsx` follows [frame 7:128](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=7-128).
+It reuses TopBar, ActionBar and Button, and adds Input and SummaryRow. The three
+summary rows reflect the chosen service, drop-off day/time and price. Input uses
+real focus to show Figma's 2px brand border; fields are not artificially focused.
+The existing local chevron asset is reused.
+
+Name is required after trimming whitespace. Phone accepts an optional leading
+plus, digits, spaces, parentheses, dots and hyphens, with 7–15 digits. This is a
+basic format check, not phone ownership or deliverability verification. Errors
+are associated with their fields, announced, and focus moves to the first invalid
+field. Contact details and prior selections remain in React memory during back
+navigation; reloading clears them. No contact information is sent or stored by
+this app.
+
+A valid submission shows an explicit demo confirmation and disables the action
+and inputs to avoid repeat submission. There is no booking API, live reservation,
+SMS integration or payment transaction. Going back allows another demo attempt.
+
+Verification: production build and lint passed. Browser checks compared the
+392×846 screen with the Figma render, including the focused Phone field and the
+summary/input dimensions. Empty fields and malformed phone were rejected; valid
+contact details completed the demo. Back navigation retained contact details,
+changed slots and service prices updated the summary, and 320px/desktop checks
+found no horizontal overflow.

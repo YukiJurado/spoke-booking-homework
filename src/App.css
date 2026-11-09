@@ -59,3 +59,17 @@
 .time-slot--disabled .time-slot__label { color: var(--color-text-muted); }
 .time-slot__radio:focus-visible + .time-slot__label { outline: var(--border-width-strong) solid var(--color-text-primary); outline-offset: var(--space-4); }
 .slot-note { color: var(--color-text-muted); font: var(--card-caption-font); letter-spacing: var(--card-caption-letter-spacing); }
+
+/* Screen 03, Summary row and Input follow Figma nodes 7:128, 11:34 and 6:23. */
+.booking-summary { display: flex; flex-direction: column; gap: var(--space-12); margin: var(--space-0); padding: var(--space-16); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-lg); }
+.summary-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-16); }
+.summary-row__label { flex: none; color: var(--color-text-muted); font: var(--card-caption-font); letter-spacing: var(--card-caption-letter-spacing); }
+.summary-row__value { margin: var(--space-0); min-width: 0; text-align: right; overflow-wrap: anywhere; font: var(--card-body-font); letter-spacing: var(--card-body-letter-spacing); }
+.contact-form { display: flex; flex-direction: column; gap: var(--space-16); }
+.input { display: flex; flex-direction: column; gap: var(--space-8); }
+.input__label { font: var(--label-field-font); letter-spacing: var(--label-field-letter-spacing); }
+.input__field { width: 100%; min-width: 0; padding: var(--space-12) var(--space-16); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text-primary); font: var(--card-body-font); letter-spacing: var(--card-body-letter-spacing); }
+.input__field::placeholder { color: var(--color-text-muted); opacity: 1; }
+.input__field:focus { outline: none; border: var(--border-width-strong) solid var(--color-brand); }
+.input__field:disabled { opacity: var(--opacity-disabled); }
+.input__error { color: var(--color-text-primary); font: var(--card-caption-font); }

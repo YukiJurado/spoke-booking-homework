@@ -21,10 +21,9 @@ type PickSlotProps = {
   onDayChange: (day: string) => void
   onTimeChange: (time: string) => void
   onContinue: () => void
-  continued: boolean
 }
 
-export function PickSlot({ service, day, time, headingRef, onDayChange, onTimeChange, onContinue, continued }: PickSlotProps) {
+export function PickSlot({ service, day, time, headingRef, onDayChange, onTimeChange, onContinue }: PickSlotProps) {
   const duration = service.duration.replace(' min', ' minutes')
   return (
     <main className="booking-content">
@@ -50,9 +49,6 @@ export function PickSlot({ service, day, time, headingRef, onDayChange, onTimeCh
         </fieldset>
       </form>
       <p className="slot-note">Ready the same day. We text you when your bike is done.</p>
-      <p className="selection-status" role="status">
-        {continued ? `${service.title}: ${day} at ${time} selected.` : ''}
-      </p>
     </main>
   )
 }

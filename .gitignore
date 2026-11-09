@@ -26,3 +26,6 @@ dist-ssr
 # Secrets: never commit these to a public repo
 .env
 .env.*
+
+# Local browser verification artifacts
+.playwright-mcp/

@@ -4,7 +4,7 @@
  * Figma names become lowercase CSS properties with / replaced by -.
  * Pixel units preserve the Figma values. Text styles expose individual
  * properties and a font shorthand; letter spacing is applied separately.
- * Inter font files still need to be supplied before matching typography.
+ * Inter weights 400, 500 and 600 are self-hosted via @fontsource/inter.
  */
 :root {
   /* Colours */
@@ -17,7 +17,15 @@
   --color-tag-background: #fcebe4;
   --color-tag-text: #b23e16;
 
+  /* Component measurements read from frame 7:114; not named Figma variables. */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --booking-screen-width: 392px;
+  --booking-screen-height: 846px;
+  --opacity-disabled: 0.5;
+
   /* Spacing */
+  --space-0: 0px;
   --space-4: 4px;
   --space-8: 8px;
   --space-12: 12px;

@@ -2,7 +2,9 @@
 
 Reviewed through Figma MCP on 2026-11-09, including a rendered view of the
 [Components section](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=3-25).
-This is an inventory and implementation guide; React components have not been built yet.
+This is an inventory and implementation guide. The first screen now uses React
+implementations of Button, Tag, TopBar, ServiceCard and ActionBar. TimeSlot, Input
+and SummaryRow remain to be implemented.
 
 Both pages were searched for component definitions. `Spoke starter kit` contains
 8 component families: 4 standalone components and 4 variant sets containing
@@ -87,9 +89,17 @@ Buttons within Action bars. Every inspected instance resolved to a main componen
    nested properties if desired.
 7. **Variants are visual specifications.** All inspected component/subtree
    reaction counts were zero. Click selection, keyboard navigation, validation,
-   and booking submission behaviour still need implementation in React.
-8. **Font loading is still pending.** The components use Inter, whose font
-   files are not bundled in the project yet.
+   and booking submission behaviour must be implemented in React. The first
+   screen now has native radio selection and visible keyboard focus.
+8. **Font loading was pending at review time.** Inter weights 400, 500 and 600
+   are now self-hosted through `@fontsource/inter`.
 
-The component sheet was visually inspected. This review does not certify
-responsive behaviour, every screen override, or browser implementation fidelity.
+The component sheet was visually inspected. The implemented first screen was
+also checked in the browser at 392×846, with additional 320px and desktop
+overflow checks. Mouse and arrow-key radio selection and Continue feedback were
+verified. Continue currently confirms the selection; it does not navigate to
+the unimplemented slot screen. The existing Figma variant geometry and orange
+colour are preserved, including the contrast limitation noted above.
+
+The original Figma review covers the source library. Browser verification here
+covers the first screen only; the other two screens remain unimplemented.

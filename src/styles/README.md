@@ -47,9 +47,12 @@ Example for a future component:
 ## Gaps and scope
 
 - All requested colour, spacing, radius, and text style values are specified in Foundations.
-- Inter font files are not bundled in this project. The family token names Inter
-  with a generic fallback; font loading is still needed for visual fidelity.
+- Inter weights 400, 500 and 600 are self-hosted via `@fontsource/inter` and
+  imported in `src/main.tsx`; the generic sans-serif fallback remains.
 - Foundations does not specify dark mode, shadows, breakpoints, or semantic
   hover/focus/error colours. No values have been invented for these.
-- The existing starter CSS retains its own styles. Components will adopt these
-  tokens in the next implementation step.
+- The first screen and its five component families now use these tokens.
+- Added implementation tokens for zero spacing, 1px/2px borders, disabled opacity
+  and the screen dimensions. These names are code additions, not Figma variable
+  names. The 392×846px screen includes the 1px outer border around the nominal
+  390×844px Figma frame.

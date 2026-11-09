@@ -24,6 +24,13 @@
   --booking-screen-height: 846px;
   --opacity-disabled: 0.5;
 
+  /* Service card hover: code-first interaction, mirrored in Figma. */
+  --service-card-hover-lift: -4px;
+  --color-service-card-shadow: rgb(26 26 26 / 12%);
+  --service-card-hover-shadow: 0px var(--space-8) var(--space-20) 0px var(--color-service-card-shadow);
+  --service-card-motion-duration: 180ms;
+  --service-card-motion-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+
   /* Spacing */
   --space-0: 0px;
   --space-4: 4px;

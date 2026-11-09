@@ -10,7 +10,7 @@ implementations.
 
 Both pages were searched for component definitions. `Spoke starter kit` contains
 8 component families: 4 standalone components and 4 variant sets containing
-9 variants (13 component definitions total). `Sloppy vs clean` contains no
+11 variants (15 component definitions total). `Sloppy vs clean` contains no
 component or component-set definitions.
 
 ## Inventory
@@ -22,13 +22,14 @@ component or component-set definitions.
 | Time slot | `6:14` | Default, Selected, Disabled | Label | `TimeSlot` |
 | Input | `6:23` | Default, Focus | Label, Placeholder | `Input` |
 | Top bar | `6:24` | None | Title, Step | `TopBar` |
-| Service card | `11:33` | Default, Selected | Title, Price, Description | `ServiceCard` |
+| Service card | `11:33` | Default, Selected, Hover, Selected hover | Title, Price, Description | `ServiceCard` |
 | Summary row | `11:34` | None | Label, Value | `SummaryRow` |
 | Action bar | `11:37` | None | None at the parent level; contains a Button instance | `ActionBar` |
 
 ## Layout and token mapping
 
-All 13 component definitions use auto layout. Their nonzero padding and gaps
+The original 13 component definitions use auto layout. The two added hover
+variants retain an auto-layout root with absolute visual layers for the lift. Their nonzero padding and gaps
 are variable-bound. Visible solid colours are variable-bound except for the
 Top bar chevron stroke, which is a literal `#1a1a1a` matching `color/text/primary`.
 Text layers use named text styles matching the imported typography tokens.
@@ -90,7 +91,8 @@ Buttons within Action bars. Every inspected instance resolved to a main componen
    The React components should accept these values as props; Figma can expose
    nested properties if desired.
 7. **Variants are visual specifications.** All inspected component/subtree
-   reaction counts were zero. Click selection, keyboard navigation, validation,
+   reaction counts were zero at the original review. Service card now has
+   hover/leave and click prototype transitions. Click selection, keyboard navigation, validation,
    and booking submission behaviour must be implemented in React. The first
    screen now has native radio selection and visible keyboard focus.
 8. **Font loading was pending at review time.** Inter weights 400, 500 and 600
@@ -151,3 +153,37 @@ summary/input dimensions. Empty fields and malformed phone were rejected; valid
 contact details completed the demo. Back navigation retained contact details,
 changed slots and service prices updated the summary, and 320px/desktop checks
 found no horizontal overflow.
+
+
+## Service card hover (code first, then Figma)
+
+- The visual card lifts 4px over 180ms with `cubic-bezier(0.2, 0.8, 0.2, 1)`.
+- Shadow: 0px horizontal, 8px vertical, 20px blur, 0px spread, `#1a1a1a` at 12%.
+- Default and Selected both support hover; Selected keeps its brand border.
+- Only the visual card moves. The native radio hit area and surrounding layout
+  stay fixed. The visual layers ignore pointer events so they do not intercept
+  the radio control.
+- Keyboard focus provides the same elevation and the existing visible outline.
+  Reduced-motion preference removes movement and transition, retaining shadow.
+  Pointer hover is limited to fine pointers that support hover.
+- New code tokens in `src/styles/tokens.css` describe the lift, shadow and timing.
+
+The existing [Service card set](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=11-33)
+now contains four states: Default, Selected, Hover (`2012:79`) and Selected hover
+(`2012:87`). The Hover variants move Surface and content up 4px inside a fixed
+component boundary. Existing content properties and screen text overrides are
+preserved. Shared effect style `Service card/Hover` binds its colour to
+`color/service-card/shadow`, vertical offset to `space/8`, and blur to `space/20`.
+The shadow colour has EFFECT_COLOR scope and WEB syntax matching the CSS token.
+
+Prototype transitions use Smart Animate, 180ms and the same easing. Hover enters
+the matching raised state; leaving returns to the matching rest state. Clicking
+an unselected state changes to Selected (or Selected hover while hovering).
+These interactions demonstrate one card; the React radio group handles exclusive
+selection across the list.
+
+[Hover review frame](https://www.figma.com/design/xWrQF0fTmdvB0OKzHVPsDo/?node-id=2012-103)
+shows all four states as component instances. Figma screenshots verified the
+preview without clipped shadows and the original service screen with its content
+intact. Browser checks verified the 4px transform, matching shadow, unchanged
+neighbour positions, selected border, mouse/keyboard selection and reduced motion.

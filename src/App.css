@@ -73,3 +73,15 @@
 .input__field:focus { outline: none; border: var(--border-width-strong) solid var(--color-brand); }
 .input__field:disabled { opacity: var(--opacity-disabled); }
 .input__error { color: var(--color-text-primary); font: var(--card-caption-font); }
+
+/* Lift only the visual card, keeping the radio hit area and list layout stable. */
+.service-card { pointer-events: none; transition: transform var(--service-card-motion-duration) var(--service-card-motion-easing), box-shadow var(--service-card-motion-duration) var(--service-card-motion-easing); }
+.service-option__radio:focus-visible + .service-card { transform: translateY(var(--service-card-hover-lift)); box-shadow: var(--service-card-hover-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .service-option:hover .service-card { transform: translateY(var(--service-card-hover-lift)); box-shadow: var(--service-card-hover-shadow); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-card { transition: none; }
+  .service-option:hover .service-card,
+  .service-option__radio:focus-visible + .service-card { transform: none; }
+}

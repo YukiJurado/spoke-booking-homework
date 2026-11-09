@@ -56,3 +56,15 @@ Example for a future component:
   and the screen dimensions. These names are code additions, not Figma variable
   names. The 392×846px screen includes the 1px outer border around the nominal
   390×844px Figma frame.
+
+
+## Service card interaction tokens
+
+The code-first hover design adds `--service-card-hover-lift` (-4px),
+`--color-service-card-shadow` (`#1a1a1a` at 12% opacity),
+`--service-card-hover-shadow` (0px 8px 20px 0px),
+`--service-card-motion-duration` (180ms), and
+`--service-card-motion-easing` (`cubic-bezier(0.2, 0.8, 0.2, 1)`).
+Figma mirrors the colour as `color/service-card/shadow` and the shadow as the
+shared `Service card/Hover` effect style. Existing spacing tokens supply shadow
+offset and blur; the lift is a visual offset inside the Figma hover variant.
